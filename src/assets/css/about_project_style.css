@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*about_project*/
+
+.about_project {
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.about_project_wrapper {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.about_project_contacts_info_details_wrapper {
+    width: 100%;
+    margin-bottom: 80px;
+}
+.about_project_contacts_title {
+    color:  #528DFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+
+.about_project_contacts_info_detail_title {
+    color:  #252525;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+.about_project_contacts_info_detail {
+    width: 100%;
+}
+.about_project_contacts_info_detail:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.about_project_contacts_info_detail_link {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+.about_project_details_wrapper {
+    width: 100%
+}
+.about_project_details_title {
+    color:  #528DFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.about_project_details_info {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+.about_project_details_info:not(:last-child) {
+    margin-bottom: 20px
+}
+
+
+/*feedback*/
+
+.feedback {
+    width: 100%;
+    background:  #528DFF;
+    padding: 40px 0;
+}
+.feedback_wrapper {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.feedback_form {
+    width: 100%
+}
+
+.feedback_title {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 121.2%;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.feedback_input_title_main_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.feedback_input_title_wrapper {
+    width: 32%;
+}
+.feedback_input_title {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 121.2%;
+    margin-bottom: 6px;
+}
+.feedback_input_field {
+    border-radius: 10px;
+    background: #FFF;
+    width: 100%;
+    padding: 15px;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.send_feedback_btn {
+    border-radius: 8px;
+    background: #FFF;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color:  #528DFF;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.feedback_checkbox_label {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.feedback_checkbox_title {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 121.2%;
+    margin-left: 10px;
+    flex: 1;
+}
+.feedback_checkbox_title span {
+    text-decoration: underline;
+}
+
+
+.container15 {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 15px
+
+}
+
+/* Hide the browser's default checkbox */
+.feedback_checkbox_label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.feedback_checkbox_mark {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: #FFF;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.feedback_checkbox_mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.feedback_checkbox_label input:checked ~ .feedback_checkbox_mark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.feedback_checkbox_label .feedback_checkbox_mark:after {
+    content: '';
+    background-image: url("../svg/check_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 50%;
+    top: 22%;
+    transform: translate(-50%, -7%);
+    z-index: 9;
+    width: 20px;
+    height: 15px
+}
+
+.feedback_checkbox_label {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+/*media*/
+@media (max-width: 1200px) {
+    .about_project_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+    }
+    .feedback_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .about_project_contacts_info_details_wrapper {
+        margin-bottom: 60px!important;
+    }
+    .about_project_details_info {
+        font-size: 16px!important;
+    }
+}
+
+@media (max-width: 475px) {
+    .about_project {
+        margin-bottom: 50px!important;
+    }
+    .feedback_checkbox_title {
+        font-size: 14px!important;
+    }
+    .feedback_title {
+        font-size: 28px!important;
+    }
+    .about_project_contacts_title {
+        margin-bottom: 20px!important;
+    }
+}
+
+@media (max-width: 600px) {
+    .feedback_input_title_wrapper {
+        width: 100% !important;
+        margin-bottom: 15px;
+    }
+    .feedback_input_title_main_wrapper {
+        flex-direction: column;
+    }
+    .send_feedback_btn {
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .feedback_checkbox_label {
+        justify-content: center!important;
+    }
+}
+

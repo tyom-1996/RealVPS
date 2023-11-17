@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.providers {
+    width: 100%;
+    margin-bottom: 100px;
+
+}
+.providers_wrapper {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.providers_title {
+    color: #333;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+
+.providers_list_items_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.providers_list_item {
+    width: 24%;
+    height: 222px;
+    border-radius: 10px;
+    background: #ECF2F6;
+    margin-bottom: 30px;
+    padding: 10px 10px 17px 10px;
+}
+.providers_list_item_img  {
+    width: 100%;
+    height: 159px;
+    margin: 0 auto;
+    margin-bottom: 17px;
+}
+
+.providers_list_item_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.providers_list_item_title_info_wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.providers_list_item_info_box {
+    display: flex;
+    align-items: center;
+}
+
+.providers_list_item_title {
+    color: #333;
+    text-align: center;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.providers_list_item_info {
+    color:  #528DFF;
+    text-align: center;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 2px;
+}
+
+.providers_pagination_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.providers_pagination_prev_btn {
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+}
+
+.providers_pagination_next_btn {
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+}
+
+.providers_pagination_link {
+    color:  #528DFF;
+    font-family: 'Rubik',sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3.85px;
+    width: 32px;
+    height: 32px;
+
+}
+
+.providers_pagination_link:hover {
+    background: #528DFF;
+    color: #FFFFFF;
+}
+.providers_pagination_link.active_link {
+    background: #528DFF!important;
+    color: #FFFFFF!important;
+}
+
+.providers_pagination_link_point {
+    color:  #528DFF;
+    font-family: 'Rubik',sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+/*media*/
+
+@media (max-width: 1200px) {
+    .providers_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+    }
+}
+
+@media (min-width: 970px) and (max-width: 1070px) {
+    .providers_list_item_img {
+        height: 145px!important;
+    }
+    .providers_list_item {
+        height: 213px!important;
+    }
+}
+@media (min-width: 475px) and (max-width: 970px) {
+    .providers_list_item_img {
+        height: 130px!important;
+    }
+    .providers_list_item {
+        height: 195px!important;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 890px) {
+    .providers_list_item {
+        width: 32% !important;
+    }
+}
+
+@media (min-width: 475px) and (max-width: 650px) {
+    .providers_list_item {
+        width: 48% !important;
+    }
+}
+
+
+@media  (max-width: 475px) {
+    .providers_list_item {
+        width: 100%!important;
+    }
+    .providers {
+        margin-bottom: 60px!important;
+    }
+    .providers_title {
+        margin-bottom: 25px!important;
+    }
+}
+
+

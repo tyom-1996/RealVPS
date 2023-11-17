@@ -1,0 +1,1216 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*card*/
+
+.card {
+    width: 100%
+}
+
+.card_wrapper {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+}
+.card_provider_img_info_wrapper {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_provider_img {
+    border-radius: 20px;
+    border: 3px solid #ECF2F6;
+    background: #FFF;
+    width: 170px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card_provider_img img {
+    width: 144px;
+    /*height: 100%;*/
+    object-fit: cover;
+}
+
+.card_provider_info_wrapper {
+    border-radius: 15px;
+    border: 3px solid #ECF2F6;
+    background: #FFF;
+    max-width: 970px;
+    width: 100%;
+    padding: 15px;
+}
+
+.card_provider_info_title {
+    color:  #528DFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 15px;
+}
+
+.card_provider_info_detail_item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.card_provider_info_detail_item:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.card_provider_info_detail_item:first-of-type {
+    border-radius: 5px;
+    background: #F7F7F7;
+    padding: 7px 20px;
+}
+.card_provider_info_detail_item:last-of-type {
+    border-radius: 5px;
+    background: #F7F7F7;
+    padding: 7px 20px;
+}
+
+.card_provider_info_detail_item:nth-of-type(2) {
+    padding: 0 20px;
+}
+.card_provider_info_detail_item_title {
+    color: #333;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 48%;
+}
+
+
+.card_provider_info_detail_item_info {
+    color: #333;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.card_provider_info_detail_item_info_blue {
+    color: #528DFF!important;
+}
+
+.rates_info {
+    color: #333;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+.rates_wrapper {
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.rates_items_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.rates_item {
+    width: 32%;
+    border-radius: 10px;
+    border: 1px solid #ECF2F6;
+    margin-bottom: 30px;
+}
+
+.rates_item_title_info_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8FAFC;
+    padding: 20px 20px 10px 20px;
+
+}
+.rates_item_title_info_wrapper2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #D8D8D8;
+    background: #F8FAFC;
+    padding: 0 20px 15px 20px;
+}
+
+.rate_item_title {
+    color: #252525;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.rate_item_info {
+    color: #528DFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.rate_item_title2 {
+    color:  #528DFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.rate_item_info2 {
+    color: #333;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.rates_item_country_city_info_wrapper {
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8FAFC;
+    padding:  20px;
+}
+.rates_item_city_info {
+    color:  #528DFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.rates_item_country_info {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.rates_item_details_title_info_wrapper {
+    width: 100%;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.rates_item_details_title {
+    color:  #252525;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.rates_item_details_info {
+    color: #252525;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.rates_item_price_title_info_wrapper {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8FAFC;
+    padding:  20px;
+}
+
+.rates_item_price_title {
+    color:  #252525;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.rates_item_price_info {
+    color: #528DFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.editors {
+    width: 100%;
+    margin-bottom: 100px;
+}
+.editors_title {
+    color:  #528DFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 30px
+}
+
+.editors_info {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.editors_img {
+    max-width: 512px;
+    height: 326px;
+    margin-bottom: 20px
+}
+.editors_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*send_feedback*/
+.send_feedback {
+    width: 100%;
+    background: #528DFF;
+    padding: 40px 0;
+}
+.send_feedback_wrapper {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.send_feedback_title {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 121.2%; /* 36.36px */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.send_feedback_form {
+    width: 100%;
+}
+.send_feedback_form_inputs_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.send_feedback_form_input_title_wrapper {
+    width: 49%;
+}
+.send_feedback_form_input_title {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.send_feedback_form_input_field {
+    width: 100%;
+    border-radius: 10px;
+    background: #FFF;
+    padding: 15px;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.send_feedback_form_input_field::placeholder {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+.send_feedback_form_textarea_title_wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.send_feedback_form_textarea_title {
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.send_feedback_form_textarea_field {
+    width: 100%;
+    border-radius: 10px;
+    background: #FFF;
+    padding: 22px 15px 61px 15px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    resize: none;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.send_feedback_form_textarea_field::placeholder {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+.send_feedback_form_btn {
+    border-radius: 8px;
+    background: #FFF;
+    width: 260px;
+    height: 50px;
+    color:  #528DFF;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*media*/
+
+@media (max-width: 1200px) {
+    .card_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+    }
+    .send_feedback_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .card_provider_img {
+        width: 18% !important;
+    }
+    .card_provider_info_wrapper {
+        max-width: unset!important;
+        width: 80% !important;
+    }
+}
+
+@media (min-width: 768px) and  (max-width: 950px) {
+    .rates_item {
+        width: 48% !important;
+    }
+    .card_provider_img img {
+        width: 100px!important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .card_provider_info_detail_item_title {
+        width: 53% !important;
+    }
+}
+@media (min-width: 425px) and (max-width: 768px) {
+    .card_provider_img_info_wrapper {
+        flex-direction: column;
+        align-items: flex-start!important;
+    }
+    .card_provider_img {
+        margin-bottom: 20px;
+    }
+    .card_provider_info_wrapper {
+        max-width: unset!important;
+        width: 100% !important;
+    }
+
+    .card_provider_info_detail_item {
+        justify-content: space-between;
+    }
+    .card_provider_info_detail_item_title {
+        width: unset!important;
+    }
+    .card_provider_info_detail_item_info {
+        width: unset!important;
+    }
+    .card_provider_img img {
+        width: 88% !important
+    }
+    .card_provider_img {
+        width: 200px!important;
+        height: 200px!important;
+    }
+}
+@media  (max-width: 425px) {
+    .card_provider_img_info_wrapper {
+        flex-direction: column;
+        align-items: flex-start!important;
+    }
+    .card_provider_img {
+        margin-bottom: 20px;
+    }
+    .card_provider_info_wrapper {
+        max-width: unset!important;
+        width: 100% !important;
+    }
+    .rates_item {
+        width: 48% !important;
+    }
+    .card_provider_info_detail_item {
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .card_provider_info_detail_item_title {
+        width: unset!important;
+        margin-bottom: 10px
+    }
+    .card_provider_info_detail_item_info {
+        width: unset!important;
+    }
+    .card_provider_img img {
+        width: 88% !important
+    }
+    .card_provider_img {
+        width: 100%!important;
+        height: 200px!important;
+    }
+}
+
+@media (min-width: 611px) and (max-width: 768px) {
+    .editors {
+        margin-bottom: 70px!important;
+
+    }
+    .editors_info {
+        font-size: 16px!important;
+    }
+    .rates_item {
+        width: 49% !important;
+    }
+    .rates_item_details_title {
+        font-size: 16px!important;
+    }
+    .rates_item_details_info {
+        font-size: 16px!important;
+
+    }
+    .rate_item_title {
+        font-size: 18px!important;
+    }
+    .rate_item_info {
+        font-size: 18px!important;
+    }
+
+    .rate_item_title2 {
+        font-size: 18px!important;
+    }
+    .rate_item_info2 {
+        font-size: 18px!important;
+    }
+    .rates_item_city_info {
+        font-size: 18px!important;
+    }
+    .rates_item_country_info {
+        font-size: 18px!important;
+    }
+    .rates_item_price_title {
+        font-size: 18px!important;
+    }
+    .rates_item_price_info {
+        font-size: 18px!important;
+    }
+}
+@media (min-width: 570px) and (max-width: 611px) {
+    .editors {
+        margin-bottom: 70px!important;
+
+    }
+    .editors_info {
+        font-size: 16px!important;
+    }
+    .rates_item {
+        width: 49% !important;
+    }
+    .rates_item_details_title {
+        font-size: 14px!important;
+    }
+    .rates_item_details_info {
+        font-size: 14px!important;
+
+    }
+    .rate_item_title {
+        font-size: 18px!important;
+    }
+    .rate_item_info {
+        font-size: 18px!important;
+    }
+
+    .rate_item_title2 {
+        font-size: 18px!important;
+    }
+    .rate_item_info2 {
+        font-size: 18px!important;
+    }
+    .rates_item_city_info {
+        font-size: 18px!important;
+    }
+    .rates_item_country_info {
+        font-size: 18px!important;
+    }
+    .rates_item_price_title {
+        font-size: 18px!important;
+    }
+    .rates_item_price_info {
+        font-size: 18px!important;
+    }
+}
+@media  (max-width: 570px) {
+    .send_feedback_title {
+        font-size: 28px!important;
+    }
+    .send_feedback_form_btn {
+        margin: 0 auto;
+    }
+    .editors {
+        margin-bottom: 50px!important;
+
+    }
+    .rates_wrapper {
+        margin-bottom: 50px!important;
+    }
+    .editors_img {
+        height: unset!important;
+        max-width: unset!important;
+    }
+    .editors_title {
+        margin-bottom: 20px!important;
+    }
+    .editors_info {
+        font-size: 14px!important;
+    }
+    .rates_item {
+        width: 100% !important;
+    }
+    .rates_item_details_title {
+        font-size: 15px!important;
+    }
+    .rates_item_details_info {
+        font-size: 15px!important;
+
+    }
+    .rate_item_title {
+        font-size: 18px!important;
+    }
+    .rate_item_info {
+        font-size: 18px!important;
+    }
+
+    .rate_item_title2 {
+        font-size: 18px!important;
+    }
+    .rate_item_info2 {
+        font-size: 18px!important;
+    }
+    .rates_item_city_info {
+        font-size: 18px!important;
+    }
+    .rates_item_country_info {
+        font-size: 18px!important;
+    }
+    .rates_item_price_title {
+        font-size: 18px!important;
+    }
+    .rates_item_price_info {
+        font-size: 18px!important;
+    }
+}
+
+@media (max-width: 768px) {
+    .send_feedback_form_inputs_wrapper {
+        flex-direction: column;
+    }
+    .send_feedback_form_input_title_wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+/*popups*/
+
+.login_popup {
+    /*display: none;*/
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    left: 0;
+    /*right: -1000px;*/
+    /*transition: 0.5s;*/
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background:  rgba(255, 255, 255, 0.25);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+
+}
+
+.login_popup_wrapper {
+    border-radius: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.10);
+    max-width: 570px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 38px 73px 52px 73px;
+    position: relative;
+}
+
+.login_popup_title {
+    color: #333;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 37px;
+}
+.login_popup_input_wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login_popup_input_field {
+    border-radius: 8px;
+    border: 1px solid #BEBEBE;
+    background: #FFFFFF;
+    padding: 15px 12px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.login_popup_input_field::placeholder {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.login_popup_forget_password_btn {
+    color: #333;
+    text-align: right;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+    cursor: pointer;
+    outline: none;
+    background: unset;
+    border:unset;
+
+}
+
+.login_popup_forget_password_btn_parent {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+.login_popup_btn {
+    border-radius: 8px;
+    background:  #528DFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
+}
+
+.login_popup_registration_btn_title_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_popup_registration_btn_title {
+    color: #333;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 5px;
+}
+
+.login_popup_registration_btn {
+    color: #528DFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    background: unset;
+    border:unset;
+}
+
+.recovery_account_popup {
+    /*display: none;*/
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    left: 0;
+    /*right: -1000px;*/
+    /*transition: 0.5s;*/
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background:  rgba(255, 255, 255, 0.25);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+}
+
+.recovery_account_popup_wrapper {
+    border-radius: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.10);
+    max-width: 570px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 38px 73px 48px 73px;
+    position: relative;
+}
+
+.recovery_account_popup_title {
+    color: #333;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+.recovery_account_popup_info {
+    color: #333;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 31px
+}
+
+.recovery_account_popup_input_wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.recovery_account_popup_input_field {
+    border-radius: 8px;
+    border: 1px solid #BEBEBE;
+    background: #FFFFFF;
+    padding: 15px 12px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.recovery_account_popup_input_field::placeholder {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.recovery_account_popup_send_code_btn {
+    border-radius: 8px;
+    background:  #528DFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    height: 50px;
+    margin: 0 auto;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
+}
+
+.recovery_account_popup_info2 {
+    margin-bottom: 47px;
+}
+
+.recovery_account_popup_send_code_btn2 {
+    margin-top: 45px;
+}
+
+.recovery_account_popup_input_wrapper2 {
+    margin-bottom: 15px
+}
+
+.registration_popup {
+    /*display: none;*/
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    left: 0;
+    /*right: -1000px;*/
+    /*transition: 0.5s;*/
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background:  rgba(255, 255, 255, 0.25);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+}
+.registration_popup_wrapper {
+    border-radius: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.10);
+    max-width: 570px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 38px 73px 56px 73px;
+    position: relative;
+}
+
+.registration_popup_title {
+    text-align: center;
+    margin-bottom: 37px;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.registration_popup_input_wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.registration_popup_input_wrapper2 {
+    margin-bottom: 40px!important;
+}
+
+.registration_popup_input_field {
+    border-radius: 8px;
+    border: 1px solid #BEBEBE;
+    background: #FFFFFF;
+    padding: 15px 12px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.registration_popup_input_field::placeholder {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.registration_popup_btn {
+    border-radius: 8px;
+    background:  #528DFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    height: 50px;
+    margin: 0 auto;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.registration_popup_enter_btn_title_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.registration_popup_enter_btn_title {
+    color: #333;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 5px;
+}
+
+.registration_popup_enter_btn {
+    color: #528DFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+}
+
+/*popups end*/
+
+/*popups media start*/
+
+@media (min-width: 425px) and (max-width: 620px) {
+    .login_popup_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+        padding: 38px 40px 52px 40px!important;
+    }
+    .login_popup_btn {
+        width: 100% !important;
+    }
+    .recovery_account_popup_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+        padding: 38px 40px 48px 40px!important;
+    }
+    .recovery_account_popup_send_code_btn {
+        width: 100% !important;
+    }
+
+    .registration_popup_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+        padding: 38px 40px 48px 40px!important;
+    }
+    .registration_popup_btn {
+        width: 100% !important;
+    }
+}
+@media  (max-width: 425px) {
+    .login_popup_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+        padding: 38px 30px 52px 30px!important;
+    }
+    .login_popup_btn {
+        width: 100% !important
+    }
+    .login_popup_title {
+        font-size: 35px!important;
+        margin-bottom: 26px!important;
+    }
+    .recovery_account_popup_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+        padding: 38px 30px 48px 30px!important;
+    }
+    .recovery_account_popup_send_code_btn {
+        width: 100% !important;
+    }
+    .recovery_account_popup_title {
+        font-size: 30px!important;
+    }
+    .registration_popup_wrapper {
+        max-width: unset!important;
+        width: 95% !important;
+        padding: 38px 30px 48px 30px!important;
+    }
+    .registration_popup_btn {
+        width: 100% !important;
+    }
+    .registration_popup_title {
+        font-size: 35px!important;
+        margin-bottom: 26px!important;
+    }
+}
+/*popups media end*/
+
+.error_text {
+    color: red;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 5px
+}
+
+.login_buttons_text_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.login_buttons_text_title {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 10px;
+    text-align: center;
+}
+.login_popup_btn2 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+
+@media (max-width: 660px) {
+    .login_buttons_text_wrapper {
+        flex-direction: column;
+    }
+    .login_buttons_text_title {
+        margin-right: unset!important;
+    }
+
+}
+@media  (max-width: 580px) {
+    .login_buttons_text_title {
+        font-size: 25px!important;
+    }
+}
