@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/css/card_style.css';
 import Header from "./includes/Header";
+import { useParams } from 'react-router-dom';
 import Footer from "./includes/Footer";
+import ActiveStar from '../../assets/svg/active_star.svg';
+import NoActiveStar from '../../assets/svg/no_active_star.svg';
 
 
 export default function Card (props) {
@@ -64,6 +67,23 @@ export default function Card (props) {
     const [register_email_error, setRegisterEmailError] = useState(false);
     const [register_email_error_text, setRegisterEmailErrorText] = useState('');
 
+    const [img_path, setImgPath] = useState('https://realvps.justcode.am/uploads/');
+
+    const [provider_info, setProviderInfo] = useState([]);
+    const [comment_username, setCommentUsername] = useState('');
+    const [comment_username_error_text, setCommentUsernameErrorText] = useState('');
+    const [comment_username_error, setCommentUsernameError] = useState(false);
+
+    const [comment_url, setCommentUrl] = useState('');
+    const [comment_url_error_text, setCommentUrlErrorText] = useState('');
+    const [comment_url_error, setCommentUrlError] = useState(false);
+
+    const [comment_text, setCommentText] = useState('');
+    const [comment_text_error_text, setCommentTextErrorText] = useState('');
+    const [comment_text_error, setCommentTextError] = useState(false);
+
+    const [show_success_comment, setShowSuccessComment] = useState(false);
+    const [show_success_comment_text, setShowSuccessCommentText] = useState('');
 
     const [rates_list, setRatesList] = useState([
         {
@@ -221,6 +241,7 @@ export default function Card (props) {
 
     useEffect(() => {
 
+        getProviderInfo(props)
         if ('scrollRestoration' in window.history) {
             window.history.scrollRestoration = 'manual';
         }
@@ -611,6 +632,155 @@ export default function Card (props) {
 
     }
 
+    const { id } = useParams();
+
+    useEffect(() => {
+        getProviderInfo();
+    }, [id]);
+
+
+    const getProviderInfo = (url = null) => {
+
+        let api_url = url ? `url=${id}` : `https://realvps.justcode.am/api/single_page_provider/provider_id=${id}`;
+
+        console.log(id, 'props')
+        // let id = props.id;
+        let requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+
+        fetch(api_url, requestOptions)
+            .then(response => response.json())
+            .then(result =>
+                {
+                    console.log(result, 'provider Info')
+                    setProviderInfo(result)
+
+                }
+
+
+            )
+            .catch(error => console.log('error', error));
+    }
+
+
+    const handlePrevButtonClick = (index) => {
+        let links = provider_info?.tarif?.links;
+        let new_index = index;
+        let preview_url = links[new_index].url;
+        if (preview_url) {
+            getProviderInfo(preview_url)
+        }
+
+
+    }
+
+
+    const handleNextButtonClick = (index) => {
+        let links = provider_info?.tarif?.links;
+        let new_index = index;
+        let next_url = links[new_index].url;
+        if (next_url) {
+            getProviderInfo(next_url)
+        }
+
+
+    }
+
+    const addComment = () => {
+
+        let token = localStorage.getItem('token');
+        let AuthStr = 'Bearer '+ token;
+
+        if (comment_username.length == 0 || comment_url.length == 0 || comment_text.length == 0) {
+             if (comment_username.length == 0) {
+                  setCommentUsernameError(true)
+                  setCommentUsernameErrorText('Поле является обязательным.')
+             } else {
+                 setCommentUsernameError(false)
+                 setCommentUsernameErrorText('')
+             }
+            if (comment_url.length == 0) {
+                setCommentUrlError(true)
+                setCommentUrlErrorText('Поле является обязательным.')
+            } else {
+                setCommentUrlError(false)
+                setCommentUrlErrorText('')
+            }
+            if (comment_text.length == 0) {
+                setCommentTextError(true)
+                setCommentTextErrorText('Поле является обязательным.')
+            } else {
+                setCommentTextError(false)
+                setCommentTextErrorText('')
+            }
+        } else {
+
+            setCommentUsernameError(false)
+            setCommentUsernameErrorText('')
+            setCommentUrlError(false)
+            setCommentUrlErrorText('')
+            setCommentTextError(false)
+            setCommentTextErrorText('')
+
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", AuthStr);
+
+            let formdata = new FormData();
+            formdata.append("nickname", comment_username);
+            formdata.append("provider_id", id);
+            formdata.append("comment", comment_text);
+            formdata.append("url", comment_url);
+
+            let requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: formdata,
+                redirect: 'follow'
+            };
+
+
+            fetch('https://realvps.justcode.am/api/add_comment', requestOptions)
+                .then(response => response.json())
+                .then(result =>
+                    {
+                        console.log(result,  'comment')
+
+                        if (result?.message?.url[0] == 'The url field must be a valid URL.') {
+                                setCommentUrlError(true)
+                                setCommentUrlErrorText('Введите правильный адрес сайта')
+                        } else {
+                                setCommentUrlError(false)
+                                setCommentUrlErrorText('')
+                        }
+
+                        if (result.status === true) {
+                            if (result.message == 'Created') {
+                                setCommentUsername('')
+                                setCommentUrl('')
+                                setCommentText('')
+                                setShowSuccessComment(true);
+                                setShowSuccessCommentText('Ваш отзыв успешно отправлен!');
+                                setTimeout(() => {
+                                    setShowSuccessComment(false);
+                                    setShowSuccessCommentText('');
+                                }, 3000);
+
+
+                            }
+                        }
+
+                    }
+
+
+                )
+                .catch(error => console.log('error', error));
+        }
+
+
+    }
     return (
         <>
 
@@ -621,131 +791,261 @@ export default function Card (props) {
                         <div className="card_wrapper">
                             <div className="card_provider_img_info_wrapper">
                                 <div className="card_provider_img">
-                                    <img src={require('../../assets/img/card_img.png')} alt=""/>
+                                    <img src={img_path + provider_info?.provider?.photo} alt=""/>
                                 </div>
                                 <div className="card_provider_info_wrapper">
-                                    <p className='card_provider_info_title'>1Cloud</p>
+                                    <p className='card_provider_info_title'>{provider_info?.provider?.name}</p>
                                     <div className="card_provider_info_detail_item">
                                         <p className='card_provider_info_detail_item_title'>Юридическое лицо РФ (ООО или ИП)</p>
-                                        <p className='card_provider_info_detail_item_info card_provider_info_detail_item_info_blue'>EtHash</p>
+                                        <p className='card_provider_info_detail_item_info card_provider_info_detail_item_info_blue'>{provider_info?.provider?.ur_lico}</p>
                                     </div>
                                     <div className="card_provider_info_detail_item">
                                         <p className='card_provider_info_detail_item_title'>ИНН ОГРН</p>
-                                        <p className='card_provider_info_detail_item_info card_provider_info_detail_item_info_blue'>Ethereum Classic (ETC) и др.</p>
+                                        <p className='card_provider_info_detail_item_info card_provider_info_detail_item_info_blue'>{provider_info?.provider?.inn}</p>
                                     </div>
                                     <div className="card_provider_info_detail_item">
                                         <p className='card_provider_info_detail_item_title'>Дата регистрации домена</p>
-                                        <p className='card_provider_info_detail_item_info'>2400 Mh/s</p>
+                                        <p className='card_provider_info_detail_item_info'>{provider_info?.provider?.domen_created_at}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="rates_wrapper">
                                 <p className='rates_info'>Тарифы</p>
                                 <div className="rates_items_wrapper">
-                                    {rates_list.map((item, index) => {
+                                    {provider_info?.tarif?.data?.map((item, index) => {
                                         return (
                                             <div className="rates_item" key={index}>
                                                 <div className="rates_item_title_info_wrapper">
                                                     <p className="rate_item_title">
-                                                        {item.name}
+                                                        Название тарифа
                                                     </p>
-                                                    <p className='rate_item_info'>{item.info1}</p>
+                                                    <p className='rate_item_info'>{item.name ? item.name : ''}</p>
                                                 </div>
                                                 <div className="rates_item_title_info_wrapper2">
-                                                    <p className="rate_item_title2">
-                                                        {item.info2}
-                                                    </p>
-                                                    <p className='rate_item_info2'>{item.info3}</p>
+                                                    <p className="rate_item_title2">Объем диска </p>
+                                                    <p className="rate_item_info2">{item.obyom_diska ? item.obyom_diska : ''}</p>
                                                 </div>
                                                 <div className="rates_item_country_city_info_wrapper">
                                                     <p className="rates_item_city_info">
-                                                        {item.city}
+                                                        {item.country.name ? item.country.name : ''}
                                                     </p>
                                                     <p className="rates_item_country_info">
-                                                        {item.country}
+                                                        {item.city ? item.city : ''}
                                                     </p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Количество процессоров</p>
-                                                    <p className="rates_item_details_info">{item.number_of_processors}</p>
+                                                    <p className="rates_item_details_info">{item.kolichestvo_procesorov ? item.kolichestvo_procesorov : ''}</p>
+                                                </div>
+
+                                                <div className="rates_item_details_title_info_wrapper">
+                                                    <p className="rates_item_details_title">Тип диска</p>
+                                                    <p className='rate_item_info2'>{item.tip_diska ? item.tip_diska : ''}</p>
+                                                </div>
+                                                <div className="rates_item_details_title_info_wrapper">
+                                                    <p className="rates_item_details_title">Оперативная память объем</p>
+                                                    <p className='rate_item_info2'>{item.operativnaya_pamaty ? item.operativnaya_pamaty : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Частота процессора</p>
-                                                    <p className="rates_item_details_info">{item.cpu_frequency}</p>
+                                                    <p className="rates_item_details_info">{item.chastatota_procesora ? item.chastatota_procesora : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Тип процессора</p>
-                                                    <p className="rates_item_details_info">{item.processor_type}</p>
+                                                    <p className="rates_item_details_info">{item.tip_processora ? item.tip_processora : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Количество траффика</p>
-                                                    <p className="rates_item_details_info">{item.traffic_amount}</p>
+                                                    <p className="rates_item_details_info">{item.kolichestvo_trafika ? item.kolichestvo_trafika : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Полоса пропускания</p>
-                                                    <p className="rates_item_details_info">{item.bandwidth}</p>
+                                                    <p className="rates_item_details_info">{item.polosa_propuskania ? item.polosa_propuskania : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Виртуализация</p>
-                                                    <p className="rates_item_details_info">{item.virtualization}</p>
+                                                    <p className="rates_item_details_info">{item.virtulizaciya ? item.virtulizaciya : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Защита от Ddos</p>
-                                                    <p className="rates_item_details_info">{item.ddos_protection}</p>
+                                                    <p className="rates_item_details_info">{item.zashita_ot_ddos ? item.zashita_ot_ddos : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Оплата почасово\посуточно</p>
-                                                    <p className="rates_item_details_info">{item.payment}</p>
+                                                    <p className="rates_item_details_info">{item.cena_za_chas ? item.cena_za_chas : ''}/{item.cena_za_deny ? item.cena_za_deny : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Наличие IPv6</p>
-                                                    <p className="rates_item_details_info">{item.availability_of_IPv6}</p>
+                                                    <p className="rates_item_details_info">{item.nalichie_ip_6 ? item.nalichie_ip_6 : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Ограничение на тарифе</p>
-                                                    <p className="rates_item_details_info">{item.tariff_limitation}</p>
+                                                    <p className="rates_item_details_info">{item.ogranichenie_na_tarife ? item.ogranichenie_na_tarife : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Администрирование</p>
-                                                    <p className="rates_item_details_info">{item.administration}</p>
+                                                    <p className="rates_item_details_info">{item.administrativanie ? item.administrativanie : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Доступные ОС</p>
-                                                    <p className="rates_item_details_info">{item.available_OS}</p>
+                                                    <p className="rates_item_details_info">{item.oc ? item.oc : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Возможность загрузки ISO</p>
-                                                    <p className="rates_item_details_info">{item.ISO_download_option}</p>
+                                                    <p className="rates_item_details_info">{item.oc ? item.oc : ''}</p>
                                                 </div>
                                                 <div className="rates_item_details_title_info_wrapper">
                                                     <p className="rates_item_details_title">Дата-центр</p>
-                                                    <p className="rates_item_details_info">{item.data_center}</p>
+                                                    <p className="rates_item_details_info">{item.data_center ? item.data_center : ''}</p>
                                                 </div>
                                                 <div className='rates_item_price_title_info_wrapper'>
                                                     <p className='rates_item_price_title'>Цена за месяц</p>
-                                                    <p className='rates_item_price_info'>{item.price}/руб</p>
+                                                    <p className='rates_item_price_info'>{item.cena_za_mesyac ? item.cena_za_mesyac : ''}/руб</p>
                                                 </div>
                                             </div>
                                         )
                                     })}
                                 </div>
-                                <div className='providers_pagination_wrapper'>
-                                    <button className='providers_pagination_prev_btn'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M15 18L9 12L15 6" stroke="#528DFF" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        </svg>
-                                    </button>
-                                    <a href="" className='providers_pagination_link active_link'>1</a>
-                                    <a href="" className='providers_pagination_link'>2</a>
-                                    <a href="" className='providers_pagination_link'>3</a>
-                                    <span className='providers_pagination_link_point'>...</span>
-                                    <a href="" className='providers_pagination_link'>12</a>
-                                    <button className='providers_pagination_next_btn'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M9 18L15 12L9 6" stroke="#528DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        </svg>
-                                    </button>
+                                <div className='providers_pagination_wrapper' >
+
+                                    {provider_info?.tarif?.links?.map((pagination, index) => {
+                                        return (
+
+                                            <div key={index}>
+                                                {pagination.label == '&laquo; Previous'  &&
+                                                <div>
+                                                    {pagination.url  ?
+                                                        <button
+                                                            className='providers_pagination_prev_btn'
+                                                            onClick={() => {handlePrevButtonClick(index)}}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M15 18L9 12L15 6" stroke="#528DFF"  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                            </svg>
+                                                        </button>
+                                                        :
+                                                        <button className='providers_pagination_prev_btn' disabled={true}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M15 18L9 12L15 6" stroke="#528DFF" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                            </svg>
+                                                        </button>
+
+                                                    }
+
+                                                </div>
+                                                }
+
+                                                {pagination.label != 'Next &raquo;' && pagination.label != '&laquo; Previous'  &&
+                                                <button
+                                                    key={index}
+                                                    className={pagination.active === true ? 'active_link' : 'providers_pagination_link' }
+                                                    onClick={() => {
+                                                        getProviderInfo(pagination.url)
+                                                    }}
+                                                >
+
+                                                    {pagination.label}
+
+
+                                                </button>
+                                                }
+
+                                                {pagination.label == 'Next &raquo;' &&
+                                                <div>
+                                                    {pagination.url ?
+                                                        <button
+                                                            className='providers_pagination_next_btn'
+                                                            onClick={() =>{handleNextButtonClick(index)}}>
+
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M9 18L15 12L9 6" stroke="#528DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                            </svg>
+
+                                                        </button>
+                                                        :
+                                                        <button className='providers_pagination_next_btn' disabled={true}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M9 18L15 12L9 6" strokeOpacity="0.5" stroke="#528DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                            </svg>
+                                                        </button>
+                                                    }
+
+
+
+                                                </div>
+
+                                                }
+
+                                            </div>
+
+                                        )
+                                    })}
+
                                 </div>
+                            </div>
+                            <div className='admin_rating_items_wrapper'>
+                                {provider_info?.admin_comments?.map((item, index) => {
+                                    return (
+                                        <div className='rating_item' key={index}>
+                                            <p className='rating_item_title'>{item?.name}</p>
+                                            {item?.comments?.map((comment_item, index) => {
+                                                return (
+                                                    <div key={index} className='rating_item_comment_wrapper'>
+                                                        <div className="rating_item_comment_title_star_wrapper">
+                                                            <p className='rating_item_comment_title'>{comment_item?.name}</p>
+                                                            <div className='rating_item_comment_star_icon_num_wrapper'>
+                                                                <p className='rating_item_comment_star_num'>{comment_item?.star}</p>
+                                                                <span className='rating_item_comment_star_icon'>
+                                                                    {comment_item?.star == '0' ?
+                                                                        <img src={NoActiveStar} alt=""/>
+                                                                        :
+                                                                        <img src={ActiveStar} alt=""/>
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        {comment_item?.file.length > 0 &&
+                                                            <div className='rating_item_comment_img'>
+                                                                <img src={img_path + comment_item?.file[0]?.name} alt=""/>
+                                                            </div>
+                                                        }
+
+                                                        <p className='rating_item_comment_text'>
+                                                            {comment_item?.comment ? comment_item?.comment : ''}
+                                                        </p>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+
+                            <div className='user_rating_items_wrapper'>
+                                {provider_info?.user_comment?.map((comment_item, index) => {
+                                    return (
+                                        <div key={index} className='rating_item_comment_wrapper'>
+                                            <div className="rating_item_comment_title_star_wrapper">
+                                                <p className='rating_item_comment_title'>{comment_item?.nickname}</p>
+                                                <div className='rating_item_comment_star_icon_num_wrapper'>
+                                                    <p className='rating_item_comment_star_num'>{comment_item?.star}</p>
+                                                    <span className='rating_item_comment_star_icon'>
+                                                        {comment_item?.star != '0'  ?
+                                                            <img src={ActiveStar} alt=""/>
+                                                            :
+                                                            <img src={NoActiveStar} alt=""/>
+                                                        }
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <p className='rating_item_comment_text'>
+                                                {comment_item?.comment ? comment_item?.comment : ''}
+                                            </p>
+                                        </div>
+                                    )
+                                })}
+
                             </div>
                             <div className='editors'>
                                 <p className='editors_title'>Вердикт редакторов</p>
@@ -770,22 +1070,45 @@ export default function Card (props) {
                             {localStorage.getItem('token') ?
                                 <div>
                                     <h1 className='send_feedback_title'>Оставить отзыв</h1>
+                                    {show_success_comment &&
+                                         <p className='success_text'>{show_success_comment_text}</p>
+                                    }
                                     <form action="" className="send_feedback_form">
                                         <div className="send_feedback_form_inputs_wrapper">
                                             <div className='send_feedback_form_input_title_wrapper'>
                                                 <p className="send_feedback_form_input_title">Ваш Ник*</p>
-                                                <input type="text" placeholder='Example' name='username' className='send_feedback_form_input_field'/>
+                                                <input type="text" placeholder='Example' name='username'
+                                                       value={comment_username} className='send_feedback_form_input_field'
+                                                       onChange={(e) => {
+                                                           setCommentUsername(e.target.value)
+                                                       }}
+
+                                                />
+                                                {comment_username_error &&
+                                                    <p className='error_text2'>{comment_username_error_text}</p>
+                                                }
                                             </div>
                                             <div className='send_feedback_form_input_title_wrapper'>
                                                 <p className="send_feedback_form_input_title">Адрес сайта*</p>
-                                                <input type="text" placeholder='exampleuser.com' name='email' className='send_feedback_form_input_field'/>
+                                                <input type="text" placeholder='exampleuser.com' name='email'
+                                                       value={comment_url} className='send_feedback_form_input_field'
+                                                       onChange={(e) => {
+                                                           setCommentUrl(e.target.value)
+                                                       }}
+                                                />
+                                                {comment_url_error &&
+                                                    <p className='error_text2'>{comment_url_error_text}</p>
+                                                }
                                             </div>
                                         </div>
                                         <div className='send_feedback_form_textarea_title_wrapper'>
                                             <p className='send_feedback_form_textarea_title'>Текст отзыва</p>
-                                            <textarea placeholder='Текст' className='send_feedback_form_textarea_field'></textarea>
+                                            <textarea placeholder='Текст' value={comment_text} className='send_feedback_form_textarea_field' onChange={(e) => {setCommentText(e.target.value)}}></textarea>
+                                            {comment_text_error &&
+                                                <p className='error_text2'>{comment_text_error_text}</p>
+                                            }
                                         </div>
-                                        <button className='send_feedback_form_btn'>Оставить отзывы</button>
+                                        <button className='send_feedback_form_btn' type='button' onClick={() => addComment()}>Оставить отзывы</button>
                                     </form>
                                 </div>
                                 :

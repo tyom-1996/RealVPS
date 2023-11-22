@@ -15,21 +15,23 @@ import "primereact/resources/primereact.min.css";
      const [headerScroll, setHeaderScroll] = useState(false);
      const [is_open_filters_list, setIsOpenFiltersList] = useState(false);
      const [select_filter_option, setSelectSortOption] = useState(null);
+     const [img_path, setImgPath] = useState('https://realvps.justcode.am/uploads/');
+
      const [filter_options_list, setFilterOptionsList] = useState([
          {
              id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
+             value: 'Россия',
+             label: 'Россия',
          },
          {
              id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
+             value: 'Канада',
+             label: 'Канада',
          },
          {
              id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
+             value: 'Китай',
+             label: 'Китай'
          },
      ]);
 
@@ -38,18 +40,18 @@ import "primereact/resources/primereact.min.css";
      const [filter_options_list2, setFilterOptionsList2] = useState([
          {
              id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
+             value: 'Москва',
+             label: 'Москва',
          },
          {
              id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
+             value: 'Торонто',
+             label: 'Торонто',
          },
          {
              id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
+             value: 'Пекин',
+             label: 'Пекин'
          },
      ]);
 
@@ -58,19 +60,39 @@ import "primereact/resources/primereact.min.css";
      const [filter_options_list3, setFilterOptionsList3] = useState([
          {
              id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
+             value: 'OpenVZ',
+             label: 'OpenVZ',
          },
          {
              id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
+             value: 'XEN',
+             label: 'XEN',
          },
          {
              id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
+             value: 'KVM',
+             label: 'KVM',
          },
+         {
+            id: 4,
+            value: 'VMware',
+            label: 'VMware',
+         },
+         {
+             id: 5,
+             value: 'LXD/LXC',
+             label: 'LXD/LXC',
+         },
+         {
+             id: 6,
+             value: 'Hyper-V',
+             label: 'Hyper-V'
+         },
+         {
+             id: 7,
+             value: 'Virtuozzo',
+             label: 'Virtuozzo',
+         }
      ]);
 
      const [is_open_filters_list4, setIsOpenFiltersList4] = useState(false);
@@ -78,143 +100,29 @@ import "primereact/resources/primereact.min.css";
      const [filter_options_list4, setFilterOptionsList4] = useState([
          {
              id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
+             value: 'SATA',
+             label: 'SATA',
          },
          {
              id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
+             value: 'SSD',
+             label: 'SSD',
          },
          {
              id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
+             value: 'NVMe',
+             label: 'NVMe',
          },
+         {
+             id: 4,
+             value: 'SAS',
+             label: 'SAS'
+         }
      ]);
 
-     const [is_open_filters_list5, setIsOpenFiltersList5] = useState(false);
-     const [select_filter_option5, setSelectSortOption5] = useState(null);
-     const [filter_options_list5, setFilterOptionsList5] = useState([
-         {
-             id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
-         },
-         {
-             id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
-         },
-         {
-             id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
-         },
-     ]);
-
-     const [is_open_filters_list6, setIsOpenFiltersList6] = useState(false);
-     const [select_filter_option6, setSelectSortOption6] = useState(null);
-     const [filter_options_list6, setFilterOptionsList6] = useState([
-         {
-             id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
-         },
-         {
-             id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
-         },
-         {
-             id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
-         },
-     ]);
-
-     const [is_open_filters_list7, setIsOpenFiltersList7] = useState(false);
-     const [select_filter_option7, setSelectSortOption7] = useState(null);
-     const [filter_options_list7, setFilterOptionsList7] = useState([
-         {
-             id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
-         },
-         {
-             id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
-         },
-         {
-             id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
-         },
-     ]);
-
-     const [is_open_filters_list8, setIsOpenFiltersList8] = useState(false);
-     const [select_filter_option8, setSelectSortOption8] = useState(null);
-     const [filter_options_list8, setFilterOptionsList8] = useState([
-         {
-             id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
-         },
-         {
-             id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
-         },
-         {
-             id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
-         },
-     ]);
-
-     const [is_open_filters_list9, setIsOpenFiltersList9] = useState(false);
-     const [select_filter_option9, setSelectSortOption9] = useState(null);
-     const [filter_options_list9, setFilterOptionsList9] = useState([
-         {
-             id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
-         },
-         {
-             id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
-         },
-         {
-             id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
-         },
-     ]);
-
-     const [is_open_filters_list10, setIsOpenFiltersList10] = useState(false);
-     const [select_filter_option10, setSelectSortOption10] = useState(null);
-     const [filter_options_list10, setFilterOptionsList10] = useState([
-         {
-             id: 1,
-             value: 'По возрастанию цены',
-             label: 'По возрастанию цены',
-         },
-         {
-             id: 2,
-             value: 'По убыванию цены',
-             label: 'По убыванию цены',
-         },
-         {
-             id: 3,
-             value: 'Новинки',
-             label: 'Новинки'
-         },
-     ]);
      const [rowClick, setRowClick] = useState(true);
 
-     // const [data_table_info, setDataTableInfo] = useState([]);
+     const [tariff_list, setTariffList] = useState([]);
 
      const data_table_info = [
          {
@@ -351,6 +259,7 @@ import "primereact/resources/primereact.min.css";
 
      useEffect(() => {
         // localStorage.clear();
+         getTariffs()
 
          if ('scrollRestoration' in window.history) {
              window.history.scrollRestoration = 'manual';
@@ -391,7 +300,50 @@ import "primereact/resources/primereact.min.css";
 
          )
      };
-         return (
+     const getTariffs = (url = null) => {
+
+         let requestOptions = {
+             method: 'GET',
+             redirect: 'follow'
+         };
+
+         let api_url = url ? url : 'https://realvps.justcode.am/api/get_tarif';
+
+         fetch(api_url, requestOptions)
+             .then(response => response.json())
+             .then(result =>
+                 {
+                     console.log(result, 'result')
+                     setTariffList(result.data)
+                 }
+
+             )
+             .catch(error => console.log('error', error));
+     }
+
+     const handlePrevButtonClick = (index) => {
+         let links = tariff_list?.links;
+         let new_index = index;
+         let preview_url = links[new_index].url;
+         if (preview_url) {
+             getTariffs(preview_url)
+         }
+
+
+     }
+
+
+     const handleNextButtonClick = (index) => {
+         let links = tariff_list?.links;
+         let new_index = index;
+         let next_url = links[new_index].url;
+         if (next_url) {
+             getTariffs(next_url)
+         }
+
+     }
+
+     return (
          <>
 
 
@@ -407,49 +359,49 @@ import "primereact/resources/primereact.min.css";
                          <div className="real_vps_details_filters_wrapper">
                              <div className="real_vps_details_filter_inputs_main_wrapper">
                                  <div className="real_vps_details_filter_input_title_wrapper">
-                                     <p className="real_vps_details_filter_input_title">Фильтр</p>
+                                     <p className="real_vps_details_filter_input_title">CPU</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
-                                         <div>-</div>
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
+                                         <input type="number" minLength={1} maxLength={128} placeholder='от 1 до 128 шт' className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='128' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
-                                     <p className="real_vps_details_filter_input_title">Фильтр</p>
+                                     <p className="real_vps_details_filter_input_title">Частота</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
-                                         <div>-</div>
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
+                                         <input type="number" maxLength={6000} minLength={1900} placeholder='от 1900 до 6000 MHz' className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
-                                     <p className="real_vps_details_filter_input_title">Фильтр</p>
+                                     <p className="real_vps_details_filter_input_title">RAM</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
-                                         <div>-</div>
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
+                                         <input type="number" minLength={1} maxLength={512} placeholder=' от 1 до 512 GB'  className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
-                                     <p className="real_vps_details_filter_input_title">Фильтр</p>
+                                     <p className="real_vps_details_filter_input_title">Диск</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
-                                         <div>-</div>
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
+                                         <input type="number" minLength={1} maxLength={500000} placeholder='от 1 до 500000 GB'  className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
-                                     <p className="real_vps_details_filter_input_title">Фильтр</p>
+                                     <p className="real_vps_details_filter_input_title">Цена</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
-                                         <div>-</div>
-                                         <input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>
+                                         <input type="number" minLength={10} maxLength={100000} placeholder='от 10 до 100000 рублей' className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
                                  </div>
                              </div>
                              <div className="real_vps_details_filters_dropdowns_wrapper">
                                  <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
+                                     <p className="real_vps_details_filters_dropdowns_title">Страна</p>
                                      <div className="real_vps_details_filters_dropdown">
                                          <div
                                              className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
@@ -457,7 +409,7 @@ import "primereact/resources/primereact.min.css";
                                          >
                                              <p
                                                  className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option ? select_filter_option.label : 'Фильтр'}
+                                                 {select_filter_option ? select_filter_option.label : 'Страна'}
                                              </p>
                                              <span>
                                             {is_open_filters_list ?
@@ -481,7 +433,7 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          className='real_vps_details_filters_dropdown_selected_option'
                                                      >
-                                                         {select_filter_option ? select_filter_option.label : 'Фильтр'}
+                                                         {select_filter_option ? select_filter_option.label : 'Страна'}
                                                      </p>
                                                      <span>
                                             {is_open_filters_list ?
@@ -499,7 +451,12 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          key={option.value}
                                                          className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption(option)}
+                                                         onClick={() =>
+                                                             {
+                                                                 setSelectSortOption(option)
+                                                                 setIsOpenFiltersList(false)
+                                                             }
+                                                         }
                                                      >
                                                          {option.label}
                                                      </p>
@@ -509,7 +466,7 @@ import "primereact/resources/primereact.min.css";
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
+                                     <p className="real_vps_details_filters_dropdowns_title">Город</p>
                                      <div className="real_vps_details_filters_dropdown">
                                          <div
                                              className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
@@ -517,7 +474,7 @@ import "primereact/resources/primereact.min.css";
                                          >
                                              <p
                                                  className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option2 ? select_filter_option2.label : 'Фильтр'}
+                                                 {select_filter_option2 ? select_filter_option2.label : 'Город'}
                                              </p>
                                              <span>
                                             {is_open_filters_list2 ?
@@ -541,7 +498,7 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          className='real_vps_details_filters_dropdown_selected_option'
                                                      >
-                                                         {select_filter_option2 ? select_filter_option2.label : 'Фильтр'}
+                                                         {select_filter_option2 ? select_filter_option2.label : 'Город'}
                                                      </p>
                                                      <span>
                                             {is_open_filters_list2 ?
@@ -559,7 +516,12 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          key={option.value}
                                                          className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption2(option)}
+                                                         onClick={() => {
+                                                             {
+                                                                setSelectSortOption2(option)
+                                                                 setIsOpenFiltersList2(false)
+                                                             }
+                                                         }}
                                                      >
                                                          {option.label}
                                                      </p>
@@ -570,7 +532,7 @@ import "primereact/resources/primereact.min.css";
 
                                  </div>
                                  <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
+                                     <p className="real_vps_details_filters_dropdowns_title">Виртуализация</p>
                                      <div className="real_vps_details_filters_dropdown">
                                          <div
                                              className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
@@ -578,7 +540,7 @@ import "primereact/resources/primereact.min.css";
                                          >
                                              <p
                                                  className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option3 ? select_filter_option3.label : 'Фильтр'}
+                                                 {select_filter_option3 ? select_filter_option3.label : 'Виртуализация'}
                                              </p>
                                              <span>
                                             {is_open_filters_list3 ?
@@ -602,7 +564,7 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          className='real_vps_details_filters_dropdown_selected_option'
                                                      >
-                                                         {select_filter_option3 ? select_filter_option3.label : 'Фильтр'}
+                                                         {select_filter_option3 ? select_filter_option3.label : 'Виртуализация'}
                                                      </p>
                                                      <span>
                                             {is_open_filters_list3 ?
@@ -620,7 +582,12 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          key={option.value}
                                                          className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption3(option)}
+                                                         onClick={() =>
+                                                             {
+                                                                 setSelectSortOption3(option)
+                                                                 setIsOpenFiltersList3(false)
+                                                             }
+                                                         }
                                                      >
                                                          {option.label}
                                                      </p>
@@ -631,7 +598,7 @@ import "primereact/resources/primereact.min.css";
 
                                  </div>
                                  <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
+                                     <p className="real_vps_details_filters_dropdowns_title">Тип диска</p>
                                      <div className="real_vps_details_filters_dropdown">
                                          <div
                                              className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
@@ -639,7 +606,7 @@ import "primereact/resources/primereact.min.css";
                                          >
                                              <p
                                                  className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option4 ? select_filter_option4.label : 'Фильтр'}
+                                                 {select_filter_option4 ? select_filter_option4.label : 'Тип диска'}
                                              </p>
                                              <span>
                                             {is_open_filters_list4 ?
@@ -663,7 +630,7 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          className='real_vps_details_filters_dropdown_selected_option'
                                                      >
-                                                         {select_filter_option4 ? select_filter_option4.label : 'Фильтр'}
+                                                         {select_filter_option4 ? select_filter_option4.label : 'Тип диска'}
                                                      </p>
                                                      <span>
                                             {is_open_filters_list4 ?
@@ -681,7 +648,14 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          key={option.value}
                                                          className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption4(option)}
+                                                         onClick={() =>
+                                                             {
+                                                                 setSelectSortOption4(option)
+                                                                 setIsOpenFiltersList4(false)
+                                                             }
+
+                                                         }
+
                                                      >
                                                          {option.label}
                                                      </p>
@@ -691,371 +665,21 @@ import "primereact/resources/primereact.min.css";
                                      </div>
 
                                  </div>
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
-                                     <div className="real_vps_details_filters_dropdown">
-                                         <div
-                                             className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                             onClick={() => setIsOpenFiltersList5(!is_open_filters_list5)}
-                                         >
-                                             <p
-                                                 className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option5 ? select_filter_option5.label : 'Фильтр'}
-                                             </p>
-                                             <span>
-                                            {is_open_filters_list5 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                         </div>
-                                         {is_open_filters_list5 && (
-                                             <div
-                                                 className="real_vps_details_filters_dropdown_options_list_wrapper">
-                                                 <div
-                                                     className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList5(!is_open_filters_list5)}
-                                                 >
-                                                     <p
-                                                         className='real_vps_details_filters_dropdown_selected_option'
-                                                     >
-                                                         {select_filter_option5 ? select_filter_option5.label : 'Фильтр'}
-                                                     </p>
-                                                     <span>
-                                            {is_open_filters_list5 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                                 </div>
-                                                 {filter_options_list5.map((option) => (
-                                                     <p
-                                                         key={option.value}
-                                                         className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption5(option)}
-                                                     >
-                                                         {option.label}
-                                                     </p>
-                                                 ))}
-                                             </div>
-                                         )}
+                                 <div className="real_vps_details_filter_input_title_wrapper">
+                                     <p className="real_vps_details_filter_input_title">Полоса пропускания</p>
+                                     <div className="real_vps_details_filter_min_max_inputs_wrapper">
+                                         <input type="number" minLength={1} maxLength={10000} placeholder='от 1 до 10000 Mbps' className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='128' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
-
                                  </div>
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
-                                     <div className="real_vps_details_filters_dropdown">
-                                         <div
-                                             className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                             onClick={() => setIsOpenFiltersList6(!is_open_filters_list6)}
-                                         >
-                                             <p
-                                                 className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option6 ? select_filter_option6.label : 'Фильтр'}
-                                             </p>
-                                             <span>
-                                            {is_open_filters_list6 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                         </div>
-                                         {is_open_filters_list6 && (
-                                             <div
-                                                 className="real_vps_details_filters_dropdown_options_list_wrapper">
-                                                 <div
-                                                     className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList6(!is_open_filters_list6)}
-                                                 >
-                                                     <p
-                                                         className='real_vps_details_filters_dropdown_selected_option'
-                                                     >
-                                                         {select_filter_option6 ? select_filter_option6.label : 'Фильтр'}
-                                                     </p>
-                                                     <span>
-                                            {is_open_filters_list6 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                                 </div>
-                                                 {filter_options_list6.map((option) => (
-                                                     <p
-                                                         key={option.value}
-                                                         className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption6(option)}
-                                                     >
-                                                         {option.label}
-                                                     </p>
-                                                 ))}
-                                             </div>
-                                         )}
+                                 <div className="real_vps_details_filter_input_title_wrapper">
+                                     <p className="real_vps_details_filter_input_title">Оценка баллов</p>
+                                     <div className="real_vps_details_filter_min_max_inputs_wrapper">
+                                         <input type="number" maxLength={1} minLength={100} placeholder='от 1 до 100' className="real_vps_details_filter_input_field"/>
+                                         {/*<div>-</div>*/}
+                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
                                      </div>
-
-                                 </div>
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
-                                     <div className="real_vps_details_filters_dropdown">
-                                         <div
-                                             className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                             onClick={() => setIsOpenFiltersList7(!is_open_filters_list7)}
-                                         >
-                                             <p
-                                                 className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option7 ? select_filter_option7.label : 'Фильтр'}
-                                             </p>
-                                             <span>
-                                            {is_open_filters_list7 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                         </div>
-                                         {is_open_filters_list7 && (
-                                             <div
-                                                 className="real_vps_details_filters_dropdown_options_list_wrapper">
-                                                 <div
-                                                     className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList7(!is_open_filters_list7)}
-                                                 >
-                                                     <p
-                                                         className='real_vps_details_filters_dropdown_selected_option'
-                                                     >
-                                                         {select_filter_option7 ? select_filter_option7.label : 'Фильтр'}
-                                                     </p>
-                                                     <span>
-                                            {is_open_filters_list7 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                                 </div>
-                                                 {filter_options_list7.map((option) => (
-                                                     <p
-                                                         key={option.value}
-                                                         className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption7(option)}
-                                                     >
-                                                         {option.label}
-                                                     </p>
-                                                 ))}
-                                             </div>
-                                         )}
-                                     </div>
-
-                                 </div>
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
-                                     <div className="real_vps_details_filters_dropdown">
-                                         <div
-                                             className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                             onClick={() => setIsOpenFiltersList8(!is_open_filters_list8)}
-                                         >
-                                             <p
-                                                 className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option8 ? select_filter_option8.label : 'Фильтр'}
-                                             </p>
-                                             <span>
-                                            {is_open_filters_list8 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                         </div>
-                                         {is_open_filters_list8 && (
-                                             <div
-                                                 className="real_vps_details_filters_dropdown_options_list_wrapper">
-                                                 <div
-                                                     className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList8(!is_open_filters_list8)}
-                                                 >
-                                                     <p
-                                                         className='real_vps_details_filters_dropdown_selected_option'
-                                                     >
-                                                         {select_filter_option8 ? select_filter_option8.label : 'Фильтр'}
-                                                     </p>
-                                                     <span>
-                                            {is_open_filters_list8 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                                 </div>
-                                                 {filter_options_list8.map((option) => (
-                                                     <p
-                                                         key={option.value}
-                                                         className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption8(option)}
-                                                     >
-                                                         {option.label}
-                                                     </p>
-                                                 ))}
-                                             </div>
-                                         )}
-                                     </div>
-
-                                 </div>
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
-                                     <div className="real_vps_details_filters_dropdown">
-                                         <div
-                                             className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                             onClick={() => setIsOpenFiltersList9(!is_open_filters_list9)}
-                                         >
-                                             <p
-                                                 className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option9 ? select_filter_option9.label : 'Фильтр'}
-                                             </p>
-                                             <span>
-                                            {is_open_filters_list9 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                         </div>
-                                         {is_open_filters_list9 && (
-                                             <div
-                                                 className="real_vps_details_filters_dropdown_options_list_wrapper">
-                                                 <div
-                                                     className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList9(!is_open_filters_list9)}
-                                                 >
-                                                     <p
-                                                         className='real_vps_details_filters_dropdown_selected_option'
-                                                     >
-                                                         {select_filter_option9 ? select_filter_option9.label : 'Фильтр'}
-                                                     </p>
-                                                     <span>
-                                            {is_open_filters_list9 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                                 </div>
-                                                 {filter_options_list9.map((option) => (
-                                                     <p
-                                                         key={option.value}
-                                                         className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption9(option)}
-                                                     >
-                                                         {option.label}
-                                                     </p>
-                                                 ))}
-                                             </div>
-                                         )}
-                                     </div>
-
-                                 </div>
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
-                                     <p className="real_vps_details_filters_dropdowns_title">Фильтр</p>
-                                     <div className="real_vps_details_filters_dropdown">
-                                         <div
-                                             className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                             onClick={() => setIsOpenFiltersList10(!is_open_filters_list10)}
-                                         >
-                                             <p
-                                                 className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option10 ? select_filter_option10.label : 'Фильтр'}
-                                             </p>
-                                             <span>
-                                            {is_open_filters_list10 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                         </div>
-                                         {is_open_filters_list10 && (
-                                             <div
-                                                 className="real_vps_details_filters_dropdown_options_list_wrapper">
-                                                 <div
-                                                     className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList10(!is_open_filters_list10)}
-                                                 >
-                                                     <p
-                                                         className='real_vps_details_filters_dropdown_selected_option'
-                                                     >
-                                                         {select_filter_option10 ? select_filter_option10.label : 'Фильтр'}
-                                                     </p>
-                                                     <span>
-                                            {is_open_filters_list10 ?
-                                                <svg style={{transform: 'rotate(-180deg)'}} xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                                :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                                    <path d="M15.7823 9.18894L10.9063 13.8479C10.8483 13.9032 10.7854 13.9423 10.7177 13.9652C10.65 13.9884 10.5774 14 10.5 14C10.4226 14 10.35 13.9884 10.2823 13.9652C10.2146 13.9423 10.1517 13.9032 10.0937 13.8479L5.20317 9.18894C5.06772 9.05991 5 8.89862 5 8.70507C5 8.51152 5.07256 8.34562 5.21768 8.20737C5.3628 8.06912 5.5321 8 5.72559 8C5.91909 8 6.08839 8.06912 6.23351 8.20737L10.5 12.2719L14.7665 8.20737C14.9019 8.07834 15.0687 8.01382 15.2669 8.01382C15.4654 8.01382 15.6372 8.08295 15.7823 8.2212C15.9274 8.35945 16 8.52074 16 8.70507C16 8.8894 15.9274 9.05069 15.7823 9.18894Z" fill="#333333"/>
-                                                </svg>
-                                            }
-                                        </span>
-                                                 </div>
-                                                 {filter_options_list10.map((option) => (
-                                                     <p
-                                                         key={option.value}
-                                                         className="real_vps_details_filters_dropdown_options_list_option"
-                                                         onClick={() => setSelectSortOption10(option)}
-                                                     >
-                                                         {option.label}
-                                                     </p>
-                                                 ))}
-                                             </div>
-                                         )}
-                                     </div>
-
                                  </div>
                              </div>
                          </div>
@@ -1078,20 +702,135 @@ import "primereact/resources/primereact.min.css";
                              </div>
                          </div>
                      </section>
-                     <section className='datatable_pagination'>
-                         <div className='datatable_pagination_wrapper'>
-                             <DataTable value={data_table_info} className='datatable'  stripedRows paginator rows={11} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem'}}   dataKey="id" tableStyle={{ minWidth: '50rem' }}>
-                                 <Column field="image"  header="Компания" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}} body={imageBodyTemplate} ></Column>
-                                 <Column field="disk"  header="Диск" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}  ></Column>
-                                 <Column field="memory" header="Память" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                                 <Column field="processor" header="Процессор" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                                 <Column field="traffic" header="Трафик" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                                 <Column field="price" header="Цена" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                                 <Column field="virtualization" header="Виртуализация" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                                 <Column field="country" header="Страна" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                                 <Column field="Ipv6" header="Ipv6" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>
-                             </DataTable>
+                     <section className='tariff_wrapper'>
+                         {/*<div className='datatable_pagination_wrapper'>*/}
+                         {/*    <DataTable value={data_table_info} className='datatable'  stripedRows paginator rows={11} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem'}}   dataKey="id" tableStyle={{ minWidth: '50rem' }}>*/}
+                         {/*        <Column field="image"  header="Компания" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}} body={imageBodyTemplate} ></Column>*/}
+                         {/*        <Column field="disk"  header="Диск" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}  ></Column>*/}
+                         {/*        <Column field="memory" header="Память" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*        <Column field="processor" header="Процессор" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*        <Column field="traffic" header="Трафик" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*        <Column field="price" header="Цена" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*        <Column field="virtualization" header="Виртуализация" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*        <Column field="country" header="Страна" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*        <Column field="Ipv6" header="Ipv6" headerStyle={{color: '#333', fontFamily: 'Raleway', fontSize: '18px', fontWeight: '600'}}></Column>*/}
+                         {/*    </DataTable>*/}
+                         {/*</div>*/}
+
+                             <div className='tariff_titles_wrapper'>
+                                 <p className="tariff_title">Компания</p>
+                                 <p className="tariff_title">Диск</p>
+                                 <p className="tariff_title">Память</p>
+                                 <p className="tariff_title">Процессор</p>
+                                 <p className="tariff_title">Трафик</p>
+                                 <p className="tariff_title">Цена</p>
+                                 <p className="tariff_title">Виртуализация</p>
+                                 <p className="tariff_title">Страна</p>
+                                 <p className="tariff_title">Ipv6</p>
+                             </div>
+
+                         <div className="tariff_items_wrapper">
+                             {tariff_list?.data?.map((item, index) => {
+                                 return (
+                                     <div className="tariff_item" key={index}>
+                                             <div className='tariff_item_img'>
+                                                 {item?.provider &&
+                                                     <div className='tariff_item_img_child'>
+                                                         <img src={img_path + item?.provider?.photo} alt=""/>
+                                                         <span className='tariff_item_img_info'>{item?.provider?.name}</span>
+                                                     </div>
+
+                                                 }
+                                             </div>
+
+                                         <p className='tariff_item_info'>{item?.obyom_diska ? item?.obyom_diska : ''} <br/> {item?.tip_diska ? item?.tip_diska : ''}</p>
+                                         <p className='tariff_item_info'>{item?.operativnaya_pamaty ? item?.operativnaya_pamaty : ''}</p>
+                                         <p className='tariff_item_info'>{item?.tip_processora ? item?.tip_processora : ''}</p>
+                                         <p className='tariff_item_info'>{item?.tip_processora ? item?.tip_processora : ''}</p>
+                                         <p className='tariff_item_info'>{item?.cena_za_mesyac ? item?.cena_za_mesyac : ''}</p>
+                                         <p className='tariff_item_info'>{item?.virtulizaciya ? item?.virtulizaciya : ''}</p>
+                                         <p className='tariff_item_info'>{item?.country?.name ? item?.country?.name : ''}</p>
+                                         <p className='tariff_item_info'>{item?.nalichie_ip_6 ? item?.nalichie_ip_6 : ''}</p>
+                                     </div>
+                                 )
+                             })}
                          </div>
+                         <div className='providers_pagination_wrapper' >
+
+                             {tariff_list?.links?.map((pagination, index) => {
+                                 return (
+
+                                     <div key={index}>
+                                         {pagination.label == '&laquo; Previous'  &&
+                                         <div>
+                                             {pagination.url  ?
+                                                 <button
+                                                     className='providers_pagination_prev_btn'
+                                                     onClick={() => {handlePrevButtonClick(index)}}>
+                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                         <path d="M15 18L9 12L15 6" stroke="#528DFF"  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                     </svg>
+                                                 </button>
+                                                 :
+                                                 <button className='providers_pagination_prev_btn' disabled={true}>
+                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                         <path d="M15 18L9 12L15 6" stroke="#528DFF" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                     </svg>
+                                                 </button>
+
+                                             }
+
+                                         </div>
+                                         }
+
+                                         {pagination.label != 'Next &raquo;' && pagination.label != '&laquo; Previous'  &&
+                                         <button
+                                             key={index}
+                                             className={pagination.active === true ? 'active_link' : 'providers_pagination_link' }
+                                             onClick={() => {
+                                                 getTariffs(pagination.url)
+                                             }}
+                                         >
+
+                                             {pagination.label}
+
+
+                                         </button>
+                                         }
+
+                                         {pagination.label == 'Next &raquo;' &&
+                                         <div>
+                                             {pagination.url ?
+                                                 <button
+                                                     className='providers_pagination_next_btn'
+                                                     onClick={() =>{handleNextButtonClick(index)}}>
+
+                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                         <path d="M9 18L15 12L9 6" stroke="#528DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                     </svg>
+
+                                                 </button>
+                                                 :
+                                                 <button className='providers_pagination_next_btn' disabled={true}>
+                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                         <path d="M9 18L15 12L9 6" strokeOpacity="0.5" stroke="#528DFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                     </svg>
+                                                 </button>
+                                             }
+
+
+
+                                         </div>
+
+                                         }
+
+                                     </div>
+
+                                 )
+                             })}
+
+                         </div>
+
 
                      </section>
                      <section className='real_vps_details2'>

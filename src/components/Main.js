@@ -22,7 +22,7 @@ export default class Main extends React.Component {
                     <Route path="/providers" element={<Providers />} />
                     <Route path="/faq" element={<Faq />} />
                     <Route path="/aboutProject" element={<AboutProject />} />
-                    <Route path="/card" element={<Card />} />
+                    <Route path="/card/:id" element={<Card />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
 
