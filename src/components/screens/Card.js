@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import Footer from "./includes/Footer";
 import ActiveStar from '../../assets/svg/active_star.svg';
 import NoActiveStar from '../../assets/svg/no_active_star.svg';
+import  uploadIcon from '../../assets/svg/upload_icon.svg';
 
 
 export default function Card (props) {
@@ -748,27 +749,27 @@ export default function Card (props) {
                     {
                         console.log(result,  'comment')
 
-                        if (result?.message?.url[0] == 'The url field must be a valid URL.') {
+
+
+                        if (result?.status)
+                        {
+                            setCommentUsername('')
+                            setCommentUrl('')
+                            setCommentText('')
+                            setShowSuccessComment(true);
+                            setShowSuccessCommentText('Ваш отзыв успешно отправлен!');
+                            setTimeout(() => {
+                                setShowSuccessComment(false);
+                                setShowSuccessCommentText('');
+                            }, 3000);
+
+                        } else  {
+                            if (result?.message?.url[0] == 'The url field must be a valid URL.') {
                                 setCommentUrlError(true)
                                 setCommentUrlErrorText('Введите правильный адрес сайта')
-                        } else {
+                            } else {
                                 setCommentUrlError(false)
                                 setCommentUrlErrorText('')
-                        }
-
-                        if (result.status === true) {
-                            if (result.message == 'Created') {
-                                setCommentUsername('')
-                                setCommentUrl('')
-                                setCommentText('')
-                                setShowSuccessComment(true);
-                                setShowSuccessCommentText('Ваш отзыв успешно отправлен!');
-                                setTimeout(() => {
-                                    setShowSuccessComment(false);
-                                    setShowSuccessCommentText('');
-                                }, 3000);
-
-
                             }
                         }
 
@@ -781,6 +782,38 @@ export default function Card (props) {
 
 
     }
+
+    const uploadFile = (name) => {
+        console.log(img_path + name, 'img_path + name')
+        fetch(img_path + name, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/pdf',
+            },
+        })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(new Blob([blob]));
+
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = name;
+
+                document.body.appendChild(link);
+
+                link.click();
+
+                link.parentNode.removeChild(link);
+            });
+    }
+
+
+   const  isImage = (type) => {
+        if(type == 'jpg' || type == 'png' || type == 'svg' || type == 'gif' || type == 'bmp' || type == 'tiff' || type == 'tif' || type == 'heic' || type == 'heif' || type == 'webp' ||  type == 'jpeg') {
+            return true
+        }
+        return false
+   }
     return (
         <>
 
@@ -1004,9 +1037,20 @@ export default function Card (props) {
                                                             </div>
                                                         </div>
                                                         {comment_item?.file.length > 0 &&
-                                                            <div className='rating_item_comment_img'>
-                                                                <img src={img_path + comment_item?.file[0]?.name} alt=""/>
+                                                            <div>
+                                                                {isImage(comment_item?.file[0].type)
+                                                                    ?
+                                                                    <div className='rating_item_comment_img'>
+                                                                        <img src={img_path + comment_item?.file[0]?.name} alt=""/>
+                                                                    </div>
+                                                                    :
+                                                                    <button className='upload_file_btn' onClick={() => {uploadFile(comment_item?.file[0]?.name)}}>
+                                                                        <img src={uploadIcon} alt=""/>
+                                                                    </button>
+                                                                }
+
                                                             </div>
+
                                                         }
 
                                                         <p className='rating_item_comment_text'>
@@ -1069,10 +1113,13 @@ export default function Card (props) {
 
                             {localStorage.getItem('token') ?
                                 <div>
-                                    <h1 className='send_feedback_title'>Оставить отзыв</h1>
-                                    {show_success_comment &&
-                                         <p className='success_text'>{show_success_comment_text}</p>
-                                    }
+                                    <div className='feedback_title_text_wrapper'>
+                                        <h1 className='send_feedback_title'>Оставить отзыв</h1>
+                                        {show_success_comment &&
+                                        <p className='success_text'>{show_success_comment_text}</p>
+                                        }
+                                    </div>
+
                                     <form action="" className="send_feedback_form">
                                         <div className="send_feedback_form_inputs_wrapper">
                                             <div className='send_feedback_form_input_title_wrapper'>

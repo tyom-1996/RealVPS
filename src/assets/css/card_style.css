@@ -443,11 +443,12 @@
     color:  #FFFFFF;
     text-align: center;
     font-family: 'Raleway', sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 600;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    /*position: absolute;*/
+    /*margin-top: 5px;*/
+    /*margin-bottom: 10px;*/
 }
 /*media*/
 
@@ -1336,5 +1337,34 @@
 @media  (max-width: 373px) {
     .rating_item_title {
         font-size: 20px!important;
+    }
+}
+
+.upload_file_btn {
+    background: none;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+    border: none;
+    width: 128px;
+
+}
+
+.feedback_title_text_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+@media (max-width: 660px) {
+    .feedback_title_text_wrapper {
+        flex-direction: column;
+        justify-content: center!important;
+        align-items: center!important;
+        margin-bottom: 20px;
+    }
+    .send_feedback_title {
+        margin-bottom: unset!important;
     }
 }

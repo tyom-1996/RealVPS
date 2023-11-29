@@ -46,6 +46,7 @@
     margin-bottom: 30px;
     padding: 10px 10px 17px 10px;
     margin-right: 9px;
+    cursor: pointer;
 }
 .providers_list_item_img  {
     width: 100%;
@@ -98,7 +99,7 @@
 .providers_pagination_wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     max-width: 250px;
     margin: 0 auto;
@@ -143,6 +144,7 @@
     height: 32px;
     border: none;
     background: none;
+    margin: 0 5px;
 
 }
 
@@ -151,6 +153,7 @@
     color: #FFFFFF;
 }
 .active_link {
+    margin: 0 5px;
     background: #528DFF!important;
     color: #FFFFFF!important;
     font-family: 'Rubik',sans-serif;

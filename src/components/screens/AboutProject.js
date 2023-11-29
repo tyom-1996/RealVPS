@@ -11,6 +11,19 @@ export default function AboutProject (props) {
     const [headerScroll, setHeaderScroll] = useState(false);
     const [select_feedback_checkbox, setSelectFeedbackCheckbox] = useState('');
 
+    const [request_name, setRequestName] = useState('');
+    const [request_name_error_text, setRequestNameErrorText] = useState('');
+    const [request_name_error, setRequestNameError] = useState(false);
+
+    const [request_email, setRequestEmail] = useState('');
+    const [request_email_error_text, setRequestEmailErrorText] = useState('');
+    const [request_email_error, setRequestEmailError] = useState(false);
+
+    const [request_phone, setRequestPhone] = useState('');
+    const [request_phone_error_text, setRequestPhoneErrorText] = useState('');
+    const [request_phone_error, setRequestPhoneError] = useState(false);
+
+    const [isValid, setIsValid] = useState(true);
 
     useEffect(() => {
 
@@ -47,6 +60,84 @@ export default function AboutProject (props) {
 
     };
 
+    const sendRequest = () => {
+        let name_error = false;
+        let email_error = false;
+        let phone_error = false;
+
+        if (request_name.length == 0) {
+            name_error = true
+            setRequestNameError(true)
+            setRequestNameErrorText('Поле является обязательным.')
+        } else {
+            setRequestNameError(false)
+            setRequestNameErrorText('')
+        }
+
+        if (request_phone.length == 0) {
+            phone_error = true
+            setRequestPhoneError(true)
+            setRequestPhoneErrorText('Поле является обязательным.')
+        } else {
+            setRequestPhoneError(false)
+            setRequestPhoneErrorText('')
+        }
+
+        if (request_email.length == 0) {
+            email_error = true
+            setRequestEmailError(true)
+            setRequestEmailErrorText('Поле является обязательным.')
+        } else  {
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let is_valid = emailRegex.test(request_email);
+
+            if (is_valid === false) {
+                email_error = true
+                setRequestEmailError(true)
+                setRequestEmailErrorText('Неправильный адрес электронной почты!')
+            } else  {
+                setRequestEmailError(false)
+                setRequestEmailErrorText('')
+            }
+        }
+
+        if (name_error || email_error || phone_error) {
+             return false
+        }
+
+            // setRequestPhoneError(false)
+            // setRequestPhoneErrorText('')
+            // setRequestNameError(false)
+            // setRequestNameErrorText('')
+            // setRequestEmailError(false)
+            // setRequestEmailErrorText('')
+
+            let formdata = new FormData();
+            formdata.append("name", request_name);
+            formdata.append("phone", request_phone);
+            formdata.append("email", request_email);
+
+            let requestOptions = {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow'
+            };
+
+            fetch("https://realvps.justcode.am/api/send_request", requestOptions)
+                .then(response => response.json())
+                .then(result =>
+                    {
+                        console.log(result)
+                        if (result?.status === true) {
+                             setRequestName('')
+                             setRequestPhone('')
+                            setRequestEmail('')
+                        }
+                    }
+                )
+                .catch(error => console.log('error', error));
+    }
 
     return (
         <>
@@ -96,18 +187,39 @@ export default function AboutProject (props) {
                                 <div className='feedback_input_title_main_wrapper'>
                                     <div className="feedback_input_title_wrapper">
                                         <p className="feedback_input_title">Ваше имя*</p>
-                                        <input type="text" className='feedback_input_field' name='name'/>
+                                        <input type="text" className='feedback_input_field' name='name' value={request_name}
+                                               onChange={(e) => {
+                                                   setRequestName(e.target.value)
+                                               }}
+                                        />
+                                        {request_name_error &&
+                                            <p className='error_text' style={{position: 'absolute'}}>{request_name_error_text}</p>
+                                        }
                                     </div>
                                     <div className="feedback_input_title_wrapper">
                                         <p className="feedback_input_title">Ваше номер*</p>
-                                        <input type="text" className='feedback_input_field' name='phone'/>
+                                        <input type="number" className='feedback_input_field' name='phone' value={request_phone}
+                                               onChange={(e) => {
+                                                   setRequestPhone(e.target.value)
+                                               }}
+                                        />
+                                        {request_phone_error &&
+                                         <p className='error_text' style={{position: 'absolute'}}>{request_phone_error_text}</p>
+                                        }
                                     </div>
                                     <div className="feedback_input_title_wrapper">
                                         <p className="feedback_input_title">Ваша эл. почта</p>
-                                        <input type="text" className='feedback_input_field' name='mail'/>
+                                        <input type="text" className='feedback_input_field' name='mail' value={request_email}
+                                               onChange={(e) => {
+                                                   setRequestEmail(e.target.value)
+                                               }}
+                                        />
+                                        {request_email_error &&
+                                            <p className='error_text' style={{position: 'absolute'}}>{request_email_error_text}</p>
+                                        }
                                     </div>
                                 </div>
-                                <button className='send_feedback_btn'>Оставить заявку</button>
+                                <button className='send_feedback_btn' type='button' onClick={() => sendRequest()}>Оставить заявку</button>
                                 <label className='feedback_checkbox_label'>
                                     <input
                                         type='checkbox'

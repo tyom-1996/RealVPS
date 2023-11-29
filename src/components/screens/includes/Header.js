@@ -91,9 +91,10 @@ export default function Header(props) {
 
             <div  className='header'>
                 <div className='header_wrapper'>
-                    <a href='' className='header_logo_link'>
+                    <Link to={'/'} className='header_logo_link'>
                         <img src={logo} alt=""/>
-                    </a>
+                    </Link>
+
                     <div className='headers_navigation_links_wrapper'>
                         <Link to={'/'} className={pathName() === '/' ? 'active' : 'headers_navigation_link'}>
                             Главная
@@ -110,20 +111,24 @@ export default function Header(props) {
                         </Link>
                     </div>
                     <div className='header_telegram_link_wrapper'>
-                        <a href="" className='header_telegram_link'>
+                        <a href="https://desktop.telegram.org/" className='header_telegram_link'>
                             <span className='header_telegram_link_icon'>
                                 <img src={telegram_icon} alt=""/>
                             </span>
                             <span className='header_telegram_link_title'>Телеграм канал</span>
                         </a>
-                        <button
-                            className='logout_btn'
-                            onClick={() => {
-                                logout()
-                            }}
-                        >
-                            <img src={logoutIcon} alt=""/>
-                        </button>
+
+                        {localStorage.getItem('token') &&
+                            <button
+                                className='logout_btn'
+                                onClick={() => {
+                                    logout()
+                                }}
+                            >
+                                <img src={logoutIcon} alt=""/>
+                            </button>
+                        }
+
                         <button className="header_hamburger_menu"
                                 onClick={() => {
                                     setShowMobileMenu(true)
@@ -144,12 +149,10 @@ export default function Header(props) {
             {show_mobile_menu &&
                 <div className='mobile_menu_popup'>
                     <div className='mobile_menu_popup_wrapper'>
-                        <button className='mobile_menu_close_btn'
-                                onClick={() => {
+                        <button className='mobile_menu_close_btn' onClick={() => {
                                     setShowMobileMenu(false)
                                     enableBodyScroll()
-                                }}
-                        >
+                                }}>
                             <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M24.2988 24.1992L11.0995 10.9999" stroke="#528DFF" strokeWidth="1.5" strokeLinecap="round"/>
                                 <path d="M24.1992 11L10.9999 24.1993" stroke="#528DFF" strokeWidth="1.5" strokeLinecap="round"/>

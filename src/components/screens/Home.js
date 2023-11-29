@@ -14,10 +14,10 @@ import "primereact/resources/primereact.min.css";
  export default function Home (props) {
      const [headerScroll, setHeaderScroll] = useState(false);
      const [is_open_filters_list, setIsOpenFiltersList] = useState(false);
-     const [select_filter_option, setSelectSortOption] = useState(null);
+     const [select_country_filter_option, setSelectCountryFilterOption] = useState(null);
      const [img_path, setImgPath] = useState('https://realvps.justcode.am/uploads/');
 
-     const [filter_options_list, setFilterOptionsList] = useState([
+     const [filter_options_country_list, setFilterOptionsCountryList] = useState([
          {
              id: 1,
              value: 'Россия',
@@ -36,8 +36,8 @@ import "primereact/resources/primereact.min.css";
      ]);
 
      const [is_open_filters_list2, setIsOpenFiltersList2] = useState(false);
-     const [select_filter_option2, setSelectSortOption2] = useState(null);
-     const [filter_options_list2, setFilterOptionsList2] = useState([
+     const [select_city_filter_option, setSelectCityFilterOption] = useState(null);
+     const [filter_cities_options_list, setFilterCitiesOptionsList] = useState([
          {
              id: 1,
              value: 'Москва',
@@ -123,6 +123,20 @@ import "primereact/resources/primereact.min.css";
      const [rowClick, setRowClick] = useState(true);
 
      const [tariff_list, setTariffList] = useState([]);
+
+     const [start_kalichistvo_procesorov, setStartKalichistvoProcesoeov] = useState('');
+     const [end_kalichistvo_procesorov, setEndKalichistvoProcesoeov] = useState('');
+     const [start_chistota, setStartChistota] = useState('');
+     const [end_chistota, setEndChistota] = useState('');
+     const [start_ram, setStartRam] = useState('');
+     const [end_ram, setEndRam] = useState('');
+     const [disk, setDisk] = useState('');
+     const [start_price, setStartPrice] = useState('');
+     const [end_price, setEndPrice] = useState('');
+     const [start_polosa, setStartPolosa] = useState('');
+     const [end_polosa, setEndPolosa] = useState('');
+
+
 
      const data_table_info = [
          {
@@ -260,6 +274,7 @@ import "primereact/resources/primereact.min.css";
      useEffect(() => {
         // localStorage.clear();
          getTariffs()
+         getCountries();
 
          if ('scrollRestoration' in window.history) {
              window.history.scrollRestoration = 'manual';
@@ -343,6 +358,139 @@ import "primereact/resources/primereact.min.css";
 
      }
 
+     const getCountries = () => {
+         let requestOptions = {
+             method: 'GET',
+             redirect: 'follow'
+         };
+
+         fetch("https://realvps.justcode.am/api/get_country", requestOptions)
+             .then(response => response.json())
+             .then(result =>
+                 {
+                     console.log(result, 'country list')
+                     if (result?.status === true) {
+                         setFilterOptionsCountryList(result?.data)
+                     }
+                 }
+             )
+             .catch(error => console.log('error', error));
+     }
+     const getCity = (id) => {
+         let requestOptions = {
+             method: 'GET',
+             redirect: 'follow'
+         };
+
+         fetch(`https://realvps.justcode.am/api/get_city_for_country/country_id=${id}`, requestOptions)
+             .then(response => response.json())
+             .then(result =>
+                 {
+                     if (result?.status === true) {
+                         setFilterCitiesOptionsList(result?.data)
+                     }
+                     console.log(result)
+                 }
+
+             )
+             .catch(error => console.log('error', error));
+     }
+     const getFilter = () => {
+         let api_url = `https://realvps.justcode.am/api/get_tarif?`;
+
+
+         if (select_country_filter_option !== null) {
+             api_url += `country_id=${select_country_filter_option.id}`;
+         }
+         if (select_city_filter_option !== null) {
+             api_url += `&city_id=${select_city_filter_option.id}`;
+
+         }
+
+         if (select_filter_option3 !== null) {
+             api_url += `&virtulizaciya=${select_filter_option3.label}`;
+
+         }
+
+         if (select_filter_option4 !== null) {
+             api_url += `&tip_processora=${select_filter_option4.label}`;
+
+         }
+
+         if (start_kalichistvo_procesorov !== '') {
+             api_url += `&start_kolichestvo_procesorov=${start_kalichistvo_procesorov}`;
+
+         }
+
+         if (end_kalichistvo_procesorov !== '') {
+             api_url += `&end_kolichestvo_procesorov=${end_kalichistvo_procesorov}`;
+
+         }
+
+         if (start_chistota !== '') {
+             api_url += `&start_chastatota_procesora=${start_chistota}`;
+
+         }
+
+
+         if (end_chistota !== '') {
+             api_url += `&end_chastatota_procesora=${end_chistota}`;
+
+         }
+
+         if (start_ram !== '') {
+             api_url += `&start_operativnaya_pamaty=${start_ram}`;
+
+         }
+         if (end_ram !== '') {
+             api_url += `&end_operativnaya_pamaty=${end_ram}`;
+
+         }
+
+         if (start_price !== '') {
+             api_url += `&start_price=${start_price}`;
+
+         }
+         if (end_price !== '') {
+             api_url += `&end_price=${end_price}`;
+
+         }
+         if (start_polosa !== '') {
+             api_url += `&start_polosa_propuskania=${start_polosa}`;
+
+         }
+         if (end_polosa !== '') {
+             api_url += `&end_polosa_propuskania=${end_polosa}`;
+
+         }
+
+         console.log(api_url, 'url')
+         let requestOptions = {
+             method: 'GET',
+             redirect: 'follow'
+         };
+
+
+         fetch(api_url, requestOptions)
+             .then(response => response.json())
+             .then(result =>
+                 {
+                     console.log(result, 'resultfiler')
+                     setTariffList(result.data)
+                 }
+
+             )
+             .catch(error => console.log('error', error));
+     }
+
+
+     useEffect(() => {
+            getFilter()
+     }, [select_country_filter_option,select_city_filter_option, select_filter_option3,
+         select_filter_option4, start_kalichistvo_procesorov, end_kalichistvo_procesorov, start_chistota, end_chistota, start_ram,
+         end_ram, start_price, end_price, start_polosa, end_polosa])
+
+
      return (
          <>
 
@@ -357,50 +505,109 @@ import "primereact/resources/primereact.min.css";
                     </section>
                      <section className="real_vps_details_filter">
                          <div className="real_vps_details_filters_wrapper">
-                             <div className="real_vps_details_filter_inputs_main_wrapper">
                                  <div className="real_vps_details_filter_input_title_wrapper">
                                      <p className="real_vps_details_filter_input_title">CPU</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" minLength={1} maxLength={128} placeholder='от 1 до 128 шт' className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='128' className="real_vps_details_filter_input_field"/>*/}
+                                         <input type="number" minLength={1} maxLength={128}
+                                                placeholder='от 1' className="real_vps_details_filter_input_field"
+                                                value={start_kalichistvo_procesorov}
+                                                onChange={(e) => {
+                                                    setStartKalichistvoProcesoeov(e.target.value)
+                                                }}
+                                         />
+                                         <div>-</div>
+                                         <input type="number" minLength={1} maxLength={128}
+                                                placeholder='до 128' className="real_vps_details_filter_input_field"
+                                                value={end_kalichistvo_procesorov}
+                                                onChange={(e) => {
+                                                    setEndKalichistvoProcesoeov(e.target.value)
+                                                }}
+                                         />
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
                                      <p className="real_vps_details_filter_input_title">Частота</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" maxLength={6000} minLength={1900} placeholder='от 1900 до 6000 MHz' className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
+                                         <input type="number" maxLength={6000} minLength={1900}
+                                                placeholder='от 1900' className="real_vps_details_filter_input_field"
+                                                value={start_chistota}
+                                                onChange={(e) => {
+                                                    setStartChistota(e.target.value)
+                                                }}
+                                         />
+                                         <div>-</div>
+                                         <input type="number" maxLength={6000} minLength={1900}
+                                                placeholder='до 6000' className="real_vps_details_filter_input_field"
+                                                value={end_chistota}
+                                                onChange={(e) => {
+                                                    setEndChistota(e.target.value)
+                                                }}
+                                         />
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
                                      <p className="real_vps_details_filter_input_title">RAM</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" minLength={1} maxLength={512} placeholder=' от 1 до 512 GB'  className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
+                                         <input type="number" minLength={1} maxLength={512}
+                                                placeholder=' от 1'  className="real_vps_details_filter_input_field"
+                                                value={start_ram}
+                                                onChange={(e) => {
+                                                    setStartRam(e.target.value)
+                                                }}
+                                         />
+                                         <div>-</div>
+                                         <input type="number" minLength={1} maxLength={512}
+                                                placeholder='до 512' className="real_vps_details_filter_input_field"
+                                                value={end_ram}
+                                                onChange={(e) => {
+                                                    setEndRam(e.target.value)
+                                                }}
+                                         />
                                      </div>
                                  </div>
-                                 <div className="real_vps_details_filter_input_title_wrapper">
-                                     <p className="real_vps_details_filter_input_title">Диск</p>
-                                     <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" minLength={1} maxLength={500000} placeholder='от 1 до 500000 GB'  className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
-                                     </div>
-                                 </div>
+                                 {/*<div className="real_vps_details_filter_input_title_wrapper">*/}
+                                 {/*    <p className="real_vps_details_filter_input_title">Диск</p>*/}
+                                 {/*    <div className="real_vps_details_filter_min_max_inputs_wrapper">*/}
+                                 {/*        <input type="number" minLength={1} maxLength={500000}*/}
+                                 {/*               placeholder='от 1'  className="real_vps_details_filter_input_field"*/}
+                                 {/*               value={disk}*/}
+                                 {/*               onChange={(e) => {*/}
+                                 {/*                   setDisk(e.target.value)*/}
+                                 {/*               }}*/}
+                                 {/*        />*/}
+                                 {/*        <div>-</div>*/}
+                                 {/*        <input type="number" minLength={1} maxLength={500000}*/}
+                                 {/*               placeholder='до 500000' className="real_vps_details_filter_input_field"*/}
+                                 {/*               value={disk}*/}
+                                 {/*               onChange={(e) => {*/}
+                                 {/*                   setDisk(e.target.value)*/}
+                                 {/*               }}*/}
+                                 {/*        />*/}
+                                 {/*    </div>*/}
+                                 {/*</div>*/}
                                  <div className="real_vps_details_filter_input_title_wrapper">
                                      <p className="real_vps_details_filter_input_title">Цена</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" minLength={10} maxLength={100000} placeholder='от 10 до 100000 рублей' className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
+                                         <input type="number" minLength={10} maxLength={100000}
+                                                placeholder='от 10' className="real_vps_details_filter_input_field"
+                                                value={start_price}
+                                                onChange={(e) => {
+                                                    setStartPrice(e.target.value)
+
+                                                }}
+                                         />
+                                         <div>-</div>
+                                         <input type="number"  minLength={10} maxLength={100000}
+                                                placeholder='до 100000' className="real_vps_details_filter_input_field"
+                                                value={end_price}
+                                                onChange={(e) => {
+                                                    setEndPrice(e.target.value)
+
+                                                }}
+                                         />
                                      </div>
                                  </div>
-                             </div>
-                             <div className="real_vps_details_filters_dropdowns_wrapper">
-                                 <div className="real_vps_details_filters_dropdowns_title_wrapper">
+                                <div className="real_vps_details_filters_dropdowns_title_wrapper">
                                      <p className="real_vps_details_filters_dropdowns_title">Страна</p>
                                      <div className="real_vps_details_filters_dropdown">
                                          <div
@@ -409,7 +616,7 @@ import "primereact/resources/primereact.min.css";
                                          >
                                              <p
                                                  className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option ? select_filter_option.label : 'Страна'}
+                                                 {select_country_filter_option ? select_country_filter_option.name : 'Страна'}
                                              </p>
                                              <span>
                                             {is_open_filters_list ?
@@ -428,12 +635,17 @@ import "primereact/resources/primereact.min.css";
                                                  className="real_vps_details_filters_dropdown_options_list_wrapper">
                                                  <div
                                                      className="real_vps_details_filters_dropdown_selected_option_icon_wrapper"
-                                                     onClick={() => setIsOpenFiltersList(!is_open_filters_list)}
+                                                     onClick={() =>
+                                                         {
+                                                             setIsOpenFiltersList(!is_open_filters_list)
+                                                         }
+
+                                                     }
                                                  >
                                                      <p
                                                          className='real_vps_details_filters_dropdown_selected_option'
                                                      >
-                                                         {select_filter_option ? select_filter_option.label : 'Страна'}
+                                                         {select_country_filter_option ? select_country_filter_option.name : 'Страна'}
                                                      </p>
                                                      <span>
                                             {is_open_filters_list ?
@@ -447,18 +659,20 @@ import "primereact/resources/primereact.min.css";
                                             }
                                         </span>
                                                  </div>
-                                                 {filter_options_list.map((option) => (
+                                                 {filter_options_country_list?.map((option, index) => (
                                                      <p
-                                                         key={option.value}
+                                                         key={index}
                                                          className="real_vps_details_filters_dropdown_options_list_option"
                                                          onClick={() =>
                                                              {
-                                                                 setSelectSortOption(option)
+                                                                 setSelectCountryFilterOption(option)
                                                                  setIsOpenFiltersList(false)
+                                                                 console.log(option, 'option')
+                                                                 getCity(option.id)
                                                              }
                                                          }
                                                      >
-                                                         {option.label}
+                                                         {option.name}
                                                      </p>
                                                  ))}
                                              </div>
@@ -474,7 +688,7 @@ import "primereact/resources/primereact.min.css";
                                          >
                                              <p
                                                  className='real_vps_details_filters_dropdown_selected_option'>
-                                                 {select_filter_option2 ? select_filter_option2.label : 'Город'}
+                                                 {select_city_filter_option ? select_city_filter_option.name : 'Город'}
                                              </p>
                                              <span>
                                             {is_open_filters_list2 ?
@@ -498,7 +712,7 @@ import "primereact/resources/primereact.min.css";
                                                      <p
                                                          className='real_vps_details_filters_dropdown_selected_option'
                                                      >
-                                                         {select_filter_option2 ? select_filter_option2.label : 'Город'}
+                                                         {select_city_filter_option ? select_city_filter_option.name : 'Город'}
                                                      </p>
                                                      <span>
                                             {is_open_filters_list2 ?
@@ -512,18 +726,18 @@ import "primereact/resources/primereact.min.css";
                                             }
                                         </span>
                                                  </div>
-                                                 {filter_options_list2.map((option) => (
+                                                 {filter_cities_options_list?.map((option, index) => (
                                                      <p
-                                                         key={option.value}
+                                                         key={index}
                                                          className="real_vps_details_filters_dropdown_options_list_option"
                                                          onClick={() => {
                                                              {
-                                                                setSelectSortOption2(option)
+                                                                setSelectCityFilterOption(option)
                                                                  setIsOpenFiltersList2(false)
                                                              }
                                                          }}
                                                      >
-                                                         {option.label}
+                                                         {option.name}
                                                      </p>
                                                  ))}
                                              </div>
@@ -586,6 +800,7 @@ import "primereact/resources/primereact.min.css";
                                                              {
                                                                  setSelectSortOption3(option)
                                                                  setIsOpenFiltersList3(false)
+
                                                              }
                                                          }
                                                      >
@@ -652,6 +867,7 @@ import "primereact/resources/primereact.min.css";
                                                              {
                                                                  setSelectSortOption4(option)
                                                                  setIsOpenFiltersList4(false)
+
                                                              }
 
                                                          }
@@ -668,20 +884,32 @@ import "primereact/resources/primereact.min.css";
                                  <div className="real_vps_details_filter_input_title_wrapper">
                                      <p className="real_vps_details_filter_input_title">Полоса пропускания</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" minLength={1} maxLength={10000} placeholder='от 1 до 10000 Mbps' className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='128' className="real_vps_details_filter_input_field"/>*/}
+                                         <input type="number" minLength={1} maxLength={10000}
+                                                placeholder='от 1' className="real_vps_details_filter_input_field"
+                                                value={start_polosa}
+                                                onChange={(e) => {
+                                                    setStartPolosa(e.target.value)
+
+                                                }}
+                                         />
+                                         <div>-</div>
+                                         <input type="number" minLength={1} maxLength={10000}
+                                                placeholder='до 10000' className="real_vps_details_filter_input_field"
+                                                value={end_polosa}
+                                                onChange={(e) => {
+                                                    setEndPolosa(e.target.value)
+                                                }}
+                                         />
                                      </div>
                                  </div>
                                  <div className="real_vps_details_filter_input_title_wrapper">
                                      <p className="real_vps_details_filter_input_title">Оценка баллов</p>
                                      <div className="real_vps_details_filter_min_max_inputs_wrapper">
-                                         <input type="number" maxLength={1} minLength={100} placeholder='от 1 до 100' className="real_vps_details_filter_input_field"/>
-                                         {/*<div>-</div>*/}
-                                         {/*<input type="number" placeholder='0' className="real_vps_details_filter_input_field"/>*/}
+                                         <input type="number" maxLength={1} minLength={100} placeholder='от 1' className="real_vps_details_filter_input_field"/>
+                                         <div>-</div>
+                                         <input type="number" maxLength={1} minLength={100} placeholder='до 100' className="real_vps_details_filter_input_field"/>
                                      </div>
                                  </div>
-                             </div>
                          </div>
                      </section>
                      <section className="real_vps_details">
